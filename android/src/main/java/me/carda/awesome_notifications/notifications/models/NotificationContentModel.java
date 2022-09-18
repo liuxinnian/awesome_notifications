@@ -301,6 +301,10 @@ public class NotificationContentModel extends AbstractModel {
 
             case Messaging:
                 break;
+            
+            case Custom:
+                validateBigPicture(context);
+                break;
         }
 
         validateLargeIcon(context);

@@ -257,6 +257,7 @@ public class NotificationBuilder {
                         case BigPicture:
                         case ProgressBar:
                         case MediaPlayer:
+                        case Custom:
                         case Default:
                             try {
                                 notificationModel.remoteHistory = actionModel.buttonKeyInput;
@@ -840,6 +841,10 @@ public class NotificationBuilder {
                 setProgressLayout(notificationModel, builder);
                 break;
 
+            case Custom:
+                setCustomLayout(context, notificationModel.content, builder);
+                break;
+
             case Default:
             default:
                 break;
@@ -1131,6 +1136,37 @@ public class NotificationBuilder {
             .setCustomContentView(notificationLayout);
             //.setCustomBigContentView(notificationLayoutExpanded);*/
     }
+
+    private static void setCustomLayout(Context context, NotificationModel notificationModel, NotificationCompat.Builder builder) {
+        RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), android.R.layout.custom);
+ 
+        Bitmap bigPicture = null;
+
+        if (!StringUtils.isNullOrEmpty(contentModel.bigPicture))
+            bigPicture = BitmapUtils.getBitmapFromSource(
+                    context,
+                    contentModel.bigPicture,
+                    contentModel.roundedBigPicture);
+  
+         notificationLayout.setImageViewResource(R.id.bigPicture, bigPicture);
+ 
+         if (!StringUtils.isNullOrEmpty(contentModel.title)) {
+             CharSequence contentTitle = HtmlUtils.fromHtml(contentModel.title);
+             notificationLayout.setTextViewText(R.id.title, contentTitle);
+         }
+ 
+         if (!StringUtils.isNullOrEmpty(contentModel.body)) {
+             CharSequence summaryText = HtmlUtils.fromHtml(contentModel.body);
+             notificationLayout.setTextViewText(R.id.body, summaryText);
+         }
+
+         notificationLayout.setTextViewText(R.id.btn_more, "Read more");
+  
+         builder
+             .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+             .setCustomContentView(notificationLayout);
+     }
+ 
 
     private static int[] toIntArray(ArrayList<Integer> list) {
         if (list == null || list.size() <= 0) return new int[0];
