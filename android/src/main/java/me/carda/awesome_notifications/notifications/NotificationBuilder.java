@@ -843,7 +843,7 @@ public class NotificationBuilder {
                 break;
 
             case Custom:
-                setCustomLayout(context, notificationModel, builder);
+                setCustomLayout(context, notificationModel.content, builder);
                 break;
 
             case Default:
@@ -1138,7 +1138,7 @@ public class NotificationBuilder {
             //.setCustomBigContentView(notificationLayoutExpanded);*/
     }
 
-    private static void setCustomLayout(Context context, NotificationModel notificationModel, NotificationCompat.Builder builder) {
+    private static void setCustomLayout(Context context, NotificationContentModel contentModel, NotificationCompat.Builder builder) {
         RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.custom);
  
         Bitmap bigPicture = null;
@@ -1149,7 +1149,7 @@ public class NotificationBuilder {
                     contentModel.bigPicture,
                     contentModel.roundedBigPicture);
   
-         notificationLayout.setImageViewResource(R.id.bigPicture, bigPicture);
+         notificationLayout.setImageViewBitmap(R.id.bigPicture, bigPicture);
  
          if (!StringUtils.isNullOrEmpty(contentModel.title)) {
              CharSequence contentTitle = HtmlUtils.fromHtml(contentModel.title);
