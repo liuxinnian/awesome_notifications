@@ -32,6 +32,7 @@ import androidx.core.app.RemoteInput;
 
 import androidx.core.graphics.drawable.IconCompat;
 import androidx.core.text.HtmlCompat;
+import me.carda.awesome_notifications.R;
 import me.carda.awesome_notifications.AwesomeNotificationsPlugin;
 import me.carda.awesome_notifications.Definitions;
 import me.carda.awesome_notifications.notifications.broadcastReceivers.DismissedNotificationReceiver;
@@ -842,7 +843,7 @@ public class NotificationBuilder {
                 break;
 
             case Custom:
-                setCustomLayout(context, notificationModel.content, builder);
+                setCustomLayout(context, notificationModel, builder);
                 break;
 
             case Default:
@@ -1138,7 +1139,7 @@ public class NotificationBuilder {
     }
 
     private static void setCustomLayout(Context context, NotificationModel notificationModel, NotificationCompat.Builder builder) {
-        RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), android.R.layout.custom);
+        RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.custom);
  
         Bitmap bigPicture = null;
 
