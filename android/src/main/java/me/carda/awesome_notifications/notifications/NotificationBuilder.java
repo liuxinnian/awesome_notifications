@@ -258,7 +258,7 @@ public class NotificationBuilder {
                         case BigPicture:
                         case ProgressBar:
                         case MediaPlayer:
-                        case Custom:
+                        case Native:
                         case Default:
                             try {
                                 notificationModel.remoteHistory = actionModel.buttonKeyInput;
@@ -842,8 +842,8 @@ public class NotificationBuilder {
                 setProgressLayout(notificationModel, builder);
                 break;
 
-            case Custom:
-                setCustomLayout(context, notificationModel.content, builder);
+            case Native:
+                setNativeLayout(context, notificationModel.content, builder);
                 break;
 
             case Default:
@@ -1138,7 +1138,7 @@ public class NotificationBuilder {
             //.setCustomBigContentView(notificationLayoutExpanded);*/
     }
 
-    private static void setCustomLayout(Context context, NotificationContentModel contentModel, NotificationCompat.Builder builder) {
+    private static void setNativeLayout(Context context, NotificationContentModel contentModel, NotificationCompat.Builder builder) {
         RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.custom);
  
         Bitmap bigPicture = null;
@@ -1164,7 +1164,7 @@ public class NotificationBuilder {
          notificationLayout.setTextViewText(R.id.btn_more, "Read more");
   
          builder
-             .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+//             .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
              .setCustomContentView(notificationLayout);
      }
  

@@ -9,5 +9,5 @@ enum NotificationLayout {
   Messaging,
   MessagingGroup,
   MediaPlayer,
-  Custom
+  Native
 }

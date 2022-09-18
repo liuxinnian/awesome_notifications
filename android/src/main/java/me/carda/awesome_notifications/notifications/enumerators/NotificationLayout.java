@@ -10,6 +10,6 @@ public enum NotificationLayout {
     MessagingGroup,
     MediaPlayer,
     PhoneCall,
-    Custom
+    Native
 }
 

@@ -302,7 +302,7 @@ public class NotificationContentModel extends AbstractModel {
             case Messaging:
                 break;
             
-            case Custom:
+            case Native:
                 validateBigPicture(context);
                 break;
         }
