@@ -1164,7 +1164,7 @@ public class NotificationBuilder {
          notificationLayout.setTextViewText(R.id.btn_more, "Read more");
   
          builder
-//             .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
+             .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
              .setCustomContentView(notificationLayout);
      }
  
