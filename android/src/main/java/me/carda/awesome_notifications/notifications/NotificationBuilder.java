@@ -1165,7 +1165,8 @@ public class NotificationBuilder {
   
          builder
              .setStyle(new NotificationCompat.DecoratedCustomViewStyle())
-             .setCustomContentView(notificationLayout);
+             .setCustomContentView(notificationLayout)
+                 .setCustomHeadsUpContentView(notificationLayout);
      }
  
 
