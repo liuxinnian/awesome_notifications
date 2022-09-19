@@ -603,7 +603,7 @@ public class NotificationBuilder {
     }
 
     private static void setLargeIcon(Context context, NotificationModel notificationModel, NotificationCompat.Builder builder) {
-        if (notificationModel.content.notificationLayout != NotificationLayout.BigPicture)
+        if (notificationModel.content.notificationLayout != NotificationLayout.BigPicture  && notificationModel.content.notificationLayout != NotificationLayout.Native)
             if (!StringUtils.isNullOrEmpty(notificationModel.content.largeIcon)) {
                 Bitmap largeIcon = BitmapUtils.getBitmapFromSource(
                         context,
