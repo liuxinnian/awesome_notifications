@@ -428,11 +428,11 @@ public class NotificationBuilder {
         if(androidNotification.extras == null)
             androidNotification.extras = new Bundle();
 
-        updateTrackingExtras(notificationModel, channel, androidNotification.extras);
-
-        setWakeUpScreen(context, notificationModel);
-        setCriticalAlert(context, channel);
-        setCategoryFlags(context, notificationModel, androidNotification);
+//        updateTrackingExtras(notificationModel, channel, androidNotification.extras);
+//
+//        setWakeUpScreen(context, notificationModel);
+//        setCriticalAlert(context, channel);
+//        setCategoryFlags(context, notificationModel, androidNotification);
 
         return androidNotification;
     }
