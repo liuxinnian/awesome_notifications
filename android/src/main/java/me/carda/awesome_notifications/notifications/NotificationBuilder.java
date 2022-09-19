@@ -1171,10 +1171,11 @@ public class NotificationBuilder {
         }
 
          notificationLayout.setTextViewText(R.id.btn_more, "Read more");
-  
-         builder
-                 .setCustomContentView(notificationLayout)
-                 .setCustomBigContentView(notificationLayout);
+
+        builder.setContent(notificationLayout);
+//         builder
+//                 .setCustomContentView(notificationLayout)
+//                 .setCustomBigContentView(notificationLayout);
 
         return true;
      }
