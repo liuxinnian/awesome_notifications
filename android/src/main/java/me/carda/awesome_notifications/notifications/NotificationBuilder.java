@@ -384,36 +384,36 @@ public class NotificationBuilder {
         }
 
         setSmallIcon(context, notificationModel, channel, builder);
-
-        setRemoteHistory(notificationModel, builder);
-
-        setGrouping(context, notificationModel, channel, builder);
-
-        setVisibility(context, notificationModel, channel, builder);
-        setShowWhen(notificationModel, builder);
+//
+//        setRemoteHistory(notificationModel, builder);
+//
+//        setGrouping(context, notificationModel, channel, builder);
+//
+//        setVisibility(context, notificationModel, channel, builder);
+//        setShowWhen(notificationModel, builder);
 
         setLayout(context, notificationModel, channel, builder);
-
-        setTitle(notificationModel, channel, builder);
-        setBody(notificationModel, builder);
-
-        setAutoCancel(notificationModel, builder);
-        setTicker(notificationModel, builder);
-        setOnlyAlertOnce(notificationModel, channel, builder);
-
-        setLockedNotification(notificationModel, channel, builder);
-        setImportance(channel, builder);
-        setCategory(notificationModel, builder);
-
-        setSound(context, notificationModel, channel, builder);
-        setVibrationPattern(channel, builder);
-        setLights(channel, builder);
-
-        setSmallIcon(context, notificationModel, channel, builder);
-        setLargeIcon(context, notificationModel, builder);
-        setLayoutColor(context, notificationModel, channel, builder);
-
-        createActionButtons(context, notificationModel, channel, builder);
+//
+//        setTitle(notificationModel, channel, builder);
+//        setBody(notificationModel, builder);
+//
+//        setAutoCancel(notificationModel, builder);
+//        setTicker(notificationModel, builder);
+//        setOnlyAlertOnce(notificationModel, channel, builder);
+//
+//        setLockedNotification(notificationModel, channel, builder);
+//        setImportance(channel, builder);
+//        setCategory(notificationModel, builder);
+//
+//        setSound(context, notificationModel, channel, builder);
+//        setVibrationPattern(channel, builder);
+//        setLights(channel, builder);
+//
+//        setSmallIcon(context, notificationModel, channel, builder);
+//        setLargeIcon(context, notificationModel, builder);
+//        setLayoutColor(context, notificationModel, channel, builder);
+//
+//        createActionButtons(context, notificationModel, channel, builder);
 
         PendingIntent pendingActionIntent = getPendingActionIntent(context, notificationModel, channel);
         PendingIntent pendingDismissIntent = getPendingDismissIntent(context, notificationModel, channel);
