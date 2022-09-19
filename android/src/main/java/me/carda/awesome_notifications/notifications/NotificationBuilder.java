@@ -752,8 +752,6 @@ public class NotificationBuilder {
     }
 
     private static void setSmallIcon(Context context, NotificationModel notificationModel, NotificationChannelModel channelModel, NotificationCompat.Builder builder) {
-        if (notificationModel.content.notificationLayout == NotificationLayout.Native) return;
-
         if (!StringUtils.isNullOrEmpty(notificationModel.content.icon)) {
             builder.setSmallIcon(BitmapUtils.getDrawableResourceId(context, notificationModel.content.icon));
         } else if (!StringUtils.isNullOrEmpty(channelModel.icon)) {
