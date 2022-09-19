@@ -551,13 +551,15 @@ public class NotificationBuilder {
     }
 
     private static void setBody(NotificationModel notificationModel, NotificationCompat.Builder builder) {
-        builder.setContentText(HtmlUtils.fromHtml(notificationModel.content.body));
+        if (notificationModel.content.notificationLayout != NotificationLayout.Native)
+            builder.setContentText(HtmlUtils.fromHtml(notificationModel.content.body));
     }
 
     private static void setTitle(NotificationModel notificationModel, NotificationChannelModel channelModel, NotificationCompat.Builder builder) {
-        if (notificationModel.content.title != null) {
-            builder.setContentTitle(HtmlUtils.fromHtml(notificationModel.content.title));
-        }
+        if (notificationModel.content.notificationLayout != NotificationLayout.Native)
+            if (notificationModel.content.title != null) {
+                builder.setContentTitle(HtmlUtils.fromHtml(notificationModel.content.title));
+            }
     }
 
     private static void setVibrationPattern(NotificationChannelModel channelModel, NotificationCompat.Builder builder) {
@@ -631,6 +633,8 @@ public class NotificationBuilder {
 
     @NonNull
     public static void createActionButtons(Context context, NotificationModel notificationModel, NotificationChannelModel channel, NotificationCompat.Builder builder) {
+
+        if (notificationModel.content.notificationLayout == NotificationLayout.Native) return;
 
         if (ListUtils.isNullOrEmpty(notificationModel.actionButtons)) return;
 
@@ -843,7 +847,7 @@ public class NotificationBuilder {
                 break;
 
             case Native:
-                setNativeLayout(context, notificationModel.content, builder);
+                if(setNativeLayout(context, notificationModel.content, builder)) return;
                 break;
 
             case Default:
@@ -1138,7 +1142,7 @@ public class NotificationBuilder {
             //.setCustomBigContentView(notificationLayoutExpanded);*/
     }
 
-    private static void setNativeLayout(Context context, NotificationContentModel contentModel, NotificationCompat.Builder builder) {
+    private static Boolean setNativeLayout(Context context, NotificationContentModel contentModel, NotificationCompat.Builder builder) {
         RemoteViews notificationLayout = new RemoteViews(context.getPackageName(), R.layout.custom);
  
         Bitmap bigPicture = null;
@@ -1148,24 +1152,29 @@ public class NotificationBuilder {
                     context,
                     contentModel.bigPicture,
                     contentModel.roundedBigPicture);
-  
-         notificationLayout.setImageViewBitmap(R.id.bigPicture, bigPicture);
- 
-         if (!StringUtils.isNullOrEmpty(contentModel.title)) {
+
+        if (bigPicture == null)
+            return false;
+
+        notificationLayout.setImageViewBitmap(R.id.bigPicture, bigPicture);
+
+        if (!StringUtils.isNullOrEmpty(contentModel.title)) {
              CharSequence contentTitle = HtmlUtils.fromHtml(contentModel.title);
              notificationLayout.setTextViewText(R.id.title, contentTitle);
-         }
+        }
  
-         if (!StringUtils.isNullOrEmpty(contentModel.body)) {
+        if (!StringUtils.isNullOrEmpty(contentModel.body)) {
              CharSequence summaryText = HtmlUtils.fromHtml(contentModel.body);
              notificationLayout.setTextViewText(R.id.body, summaryText);
-         }
+        }
 
          notificationLayout.setTextViewText(R.id.btn_more, "Read more");
   
          builder
                  .setCustomContentView(notificationLayout)
                  .setCustomBigContentView(notificationLayout);
+
+        return true;
      }
  
 
