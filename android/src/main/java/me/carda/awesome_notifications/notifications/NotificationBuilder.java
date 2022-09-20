@@ -432,7 +432,7 @@ public class NotificationBuilder {
 //
 //        setWakeUpScreen(context, notificationModel);
 //        setCriticalAlert(context, channel);
-//        setCategoryFlags(context, notificationModel, androidNotification);
+        setCategoryFlags(context, notificationModel, androidNotification);
 
         return androidNotification;
     }
