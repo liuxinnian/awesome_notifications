@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/awesome_notifications.iml" filepath="$PROJECT_DIR$/.idea/modules/awesome_notifications.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/awesome_notifications.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/awesome_notifications.androidTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/awesome_notifications.main.iml" filepath="$PROJECT_DIR$/.idea/modules/awesome_notifications.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/awesome_notifications.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/awesome_notifications.unitTest.iml" />
     </modules>
   </component>
 </project>
